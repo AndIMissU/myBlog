@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>排序算法 | 👩🏻‍💻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Algorithm">
+    <meta name="description" content="交换类排序&amp;emsp;&amp;emsp;交换排序的基本方法是：通过一系列的交换元素过程，把原本逆序的元素交换为正确的顺序的排序方法。常见的冒泡排序和快速排序就属于交换类排序。 冒泡排序&amp;emsp;&amp;emsp;冒泡排序（英语：Bubble Sort）是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来（这里的顺序错误指的是两个元素没有按照你想排的顺序）。">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法">
+<meta property="og:url" content="http://yoursite.com/2018/04/19/排序算法/index.html">
+<meta property="og:site_name" content="👩🏻‍💻">
+<meta property="og:description" content="交换类排序&amp;emsp;&amp;emsp;交换排序的基本方法是：通过一系列的交换元素过程，把原本逆序的元素交换为正确的顺序的排序方法。常见的冒泡排序和快速排序就属于交换类排序。 冒泡排序&amp;emsp;&amp;emsp;冒泡排序（英语：Bubble Sort）是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来（这里的顺序错误指的是两个元素没有按照你想排的顺序）。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/photos/Sorting_quicksort_anim.gif">
+<meta property="og:image" content="http://yoursite.com/photos/Selection-Sort-Animation.gif">
+<meta property="og:image" content="http://yoursite.com/photos/Insertion-sort-example-300px.gif">
+<meta property="og:image" content="http://yoursite.com/photos/Merge-sort.gif">
+<meta property="og:updated_time" content="2019-08-13T08:03:34.683Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="排序算法">
+<meta name="twitter:description" content="交换类排序&amp;emsp;&amp;emsp;交换排序的基本方法是：通过一系列的交换元素过程，把原本逆序的元素交换为正确的顺序的排序方法。常见的冒泡排序和快速排序就属于交换类排序。 冒泡排序&amp;emsp;&amp;emsp;冒泡排序（英语：Bubble Sort）是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来（这里的顺序错误指的是两个元素没有按照你想排的顺序）。">
+<meta name="twitter:image" content="http://yoursite.com/photos/Sorting_quicksort_anim.gif">
+    
+        <link rel="alternate" type="application/atom+xml" title="👩🏻‍💻" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">🤡Ling</h5>
+          <a href="mailto:andimissu@163.com" title="andimissu@163.com" class="mail">andimissu@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/AndIMissU" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/3447900300" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">排序算法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">排序算法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-19T15:14:27.000Z" itemprop="datePublished" class="page-time">
+  2018-04-19
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#交换类排序"><span class="post-toc-number">1.</span> <span class="post-toc-text">交换类排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#冒泡排序"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">冒泡排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#快速排序"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">快速排序</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#选择排序"><span class="post-toc-number">2.</span> <span class="post-toc-text">选择排序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#插入排序"><span class="post-toc-number">3.</span> <span class="post-toc-text">插入排序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#归并排序"><span class="post-toc-number">4.</span> <span class="post-toc-text">归并排序</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-排序算法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">排序算法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-19 23:14:27" datetime="2018-04-19T15:14:27.000Z"  itemprop="datePublished">2018-04-19</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <a id="more"></a>
+<h3 id="交换类排序"><a href="#交换类排序" class="headerlink" title="交换类排序"></a>交换类排序</h3><p>&emsp;&emsp;交换排序的基本方法是：通过一系列的交换元素过程，把原本逆序的元素交换为正确的顺序的排序方法。常见的冒泡排序和快速排序就属于交换类排序。</p>
+<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>&emsp;&emsp;<strong>冒泡排序</strong>（英语：<strong>Bubble Sort</strong>）是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来（这里的顺序错误指的是两个元素没有按照你想排的顺序）。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。</p>
+<p>  &emsp;&emsp;&emsp;<strong>优点：</strong>  简单稳定<br>  &emsp;&emsp;&emsp;<strong>缺点：</strong>  效率不高，慢（一次只能移动相邻两个数据）<br>  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>最坏时间复杂度：</strong> <em>O(𝒏²)</em><br>  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>最优时间复杂度：</strong> <em>O(𝒏)</em><br>  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>平均时间复杂度：</strong> <em>O(𝒏²)</em><br>  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>空间复杂度：</strong> 总共 <em>O(𝒏)</em></p>
+<p>  &emsp;&emsp;冒泡排序算法的运作如下：<br>  &emsp;&emsp;&emsp;&emsp;1. 从第一个元素开始，比较相邻的元素。如果第一个比第二个大，就交换他们两个。<br>  &emsp;&emsp;&emsp;&emsp;2. 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数，将数列长度减一，再针对所有的元素重复以上的步骤 。<br>  &emsp;&emsp;&emsp;&emsp;3. 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JS代码实现：</span></span><br><span class="line"><span class="built_in">Array</span>.prototype.bubble_sort = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;    <span class="comment">// 为Array添加一个方法</span></span><br><span class="line">  <span class="keyword">var</span> temp;  <span class="comment">// 交换两个数暂时存放用</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length - <span class="number">1</span>; i++)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="keyword">this</span>.length - <span class="number">1</span> - i; j++)</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>[j] &gt; <span class="keyword">this</span>[j + <span class="number">1</span>]) &#123;</span><br><span class="line">        temp = <span class="keyword">this</span>[j];</span><br><span class="line">        <span class="keyword">this</span>[j] = <span class="keyword">this</span>[j + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">this</span>[j + <span class="number">1</span>] = temp;  <span class="comment">// 顺序不同的 交换两个数的位置</span></span><br><span class="line">      &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>&emsp;&emsp;<strong>快速排序</strong>（英语：<em>Quicksort</em>），又称划分交换排序（partition-exchange sort），简称快排，是冒泡排序的改进版。</p>
+<p>  &emsp;&emsp;&emsp;<strong>优点：</strong> 极快，快速排序是目前已知的最快的排序方法，数据移动少<br>  &emsp;&emsp;&emsp;<strong>缺点：</strong> 不稳定<br>  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>最坏时间复杂度：</strong> <em>O(𝒏²)</em><br>  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>最优时间复杂度：</strong> <em>O(𝒏log𝒏)</em><br>  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>平均时间复杂度：</strong> <em>O(𝒏log𝒏)</em><br>  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>空间复杂度：</strong> 实现的方式不同空间复杂度也不同</p>
+<p>  &emsp;&emsp;快速排序算法的运作如下：<br>  &emsp;&emsp;&emsp;&emsp;1. 从数列中挑出一个元素，称为”基准”（pivot）。<br>  &emsp;&emsp;&emsp;&emsp;2. 重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面（相同的数可以到任何一边）。在这个分区结束之后，该基准就处于数列的中间位置。这个称为分区（partition）操作 。<br>  &emsp;&emsp;&emsp;&emsp;3. 针对所有的元素重复以上的步骤，除了最后一个 。<br>  &emsp;&emsp;&emsp;&emsp;4. 递归地（recursively）把小于基准值元素的子数列和大于基准值元素的子数列排序。</p>
+<!-- 图片居中的方法 -->
+<div align="center">
+
+<p>  <img src="/photos/Sorting_quicksort_anim.gif" alt="基本布局"><br>  图1.2-1 快速排序的过程</p>
+</div>
+
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JS代码实现：</span></span><br><span class="line"><span class="built_in">Array</span>.prototype.quick_sort = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> len = <span class="keyword">this</span>.length;</span><br><span class="line">  <span class="keyword">if</span> (len &lt;= <span class="number">1</span>)   <span class="comment">// 判断数组此时的长度 小于等于1时 返回最后一个数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.slice(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">var</span> left = [];</span><br><span class="line">  <span class="keyword">var</span> right = [];</span><br><span class="line">  <span class="keyword">var</span> mid = [<span class="keyword">this</span>[<span class="number">0</span>]];</span><br><span class="line">  <span class="comment">// 分别将小于mid的放入左边和右边</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; len; i++)</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>[i] &lt; mid[<span class="number">0</span>])</span><br><span class="line">      left.push(<span class="keyword">this</span>[i]);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      right.push(<span class="keyword">this</span>[i]);</span><br><span class="line">  <span class="comment">// 利用递归 不断交换</span></span><br><span class="line">  <span class="keyword">return</span> left.quick_sort().concat(mid.concat(right.quick_sort()));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>&emsp;&emsp;<strong>选择排序</strong>（<em>Selection sort</em>）是一种简单直观的排序算法。它的工作原理如下。首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。<br>选择排序的主要优点与数据移动有关。如果某个元素位于正确的最终位置上，则它不会被移动。选择排序每次交换一对元素，它们当中至少有一个将被移到其最终位置上，因此对 <strong>𝒏</strong> 个元素的表进行排序总共进行至多 <strong>𝒏 − 1</strong> 次交换。在所有的完全依靠交换去移动元素的排序方法中，选择排序属于非常好的一种。</p>
+<p>  &emsp;&emsp;&emsp;<strong>优点：</strong> 移动数据的次数已知 （n-1）次<br>  &emsp;&emsp;&emsp;<strong>缺点：</strong> 比较次数多<br>  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>最坏时间复杂度：</strong> <em>O(𝒏²)</em><br>  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>最优时间复杂度：</strong> <em>O(𝒏²)</em><br>  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>平均时间复杂度：</strong> <em>O(𝒏²)</em><br>  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>空间复杂度：</strong> <em>O(𝒏)</em></p>
+<div align="center">
+
+<p>  <img src="/photos/Selection-Sort-Animation.gif" alt="基本布局"><br>  图2-1 选择排序的过程</p>
+</div>
+
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JS代码实现</span></span><br><span class="line">  <span class="built_in">Array</span>.prototype.selection_sort = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> min;</span><br><span class="line">    <span class="keyword">var</span> temp;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">      min = i;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> j = i + <span class="number">1</span>; j &lt; <span class="keyword">this</span>.length; j++)</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>[min] &gt; <span class="keyword">this</span>[j])</span><br><span class="line">          min = j;</span><br><span class="line">      temp = <span class="keyword">this</span>[min];</span><br><span class="line">      <span class="keyword">this</span>[min] = <span class="keyword">this</span>[i];</span><br><span class="line">      <span class="keyword">this</span>[i] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>&emsp;&emsp;<strong>插入排序</strong>（英语：<em>Insertion Sort</em>）是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用 in-place 排序（即只需用到 <em>O(1)</em>的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p>
+<p>&emsp;&emsp;&emsp;<strong>优点：</strong> 稳定，快<br>&emsp;&emsp;&emsp;<strong>缺点：</strong> 比较次数不一定，比较次数越少，插入点后的数据移动越多，特别是当数据总量庞大的时候 。<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>最坏时间复杂度：</strong> <em>O(𝒏²)</em><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>最优时间复杂度：</strong> <em>O(𝒏)</em><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>平均时间复杂度：</strong> <em>O(𝒏²)</em><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>空间复杂度：</strong> 总共 <em>O(𝒏)</em> 需要辅助空间 <em>O(1)</em></p>
+<p>&emsp;&emsp;插入排序算法的运作如下：<br>&emsp;&emsp;&emsp;&emsp;1. 从第一个元素开始，该元素可以认为已经被排序<br>&emsp;&emsp;&emsp;&emsp;2. 取出下一个元素，在已经排序的元素序列中从后向前扫描<br>&emsp;&emsp;&emsp;&emsp;3. 如果该元素（已排序）大于新元素，将该元素移到下一位置<br>&emsp;&emsp;&emsp;&emsp;4. 重复步骤3，直到找到已排序的元素小于或者等于新元素的位置<br>&emsp;&emsp;&emsp;&emsp;5. 将新元素插入到该位置后<br>&emsp;&emsp;&emsp;&emsp;6. 重复步骤2~5</p>
+<!-- 图片居中的方法 -->
+<div align="center">
+
+<p>  <img src="/photos/Insertion-sort-example-300px.gif" alt="基本布局"><br>  图3-1 插入排序的过程</p>
+</div>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JS代码实现</span></span><br><span class="line"><span class="built_in">Array</span>.prototype.insertion_sort = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>;i &lt; <span class="keyword">this</span>.length; i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; i ; j++)</span><br><span class="line">     <span class="keyword">if</span>(<span class="keyword">this</span>[j] &gt; <span class="keyword">this</span>[i]) &#123;</span><br><span class="line">        <span class="keyword">this</span>.splice(j,<span class="number">0</span>,<span class="keyword">this</span>[i]);  <span class="comment">// 往前插入</span></span><br><span class="line">        <span class="keyword">this</span>.splice(i+<span class="number">1</span>,<span class="number">1</span>); <span class="comment">// 删除之前的那个数字</span></span><br><span class="line">      &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>&emsp;&emsp;<strong>归并排序</strong>（英语：<em>Merge sort</em>）是创建在归并操作上的一种有效的排序算法，是采用<strong>分治法</strong>的一个非常典型的应用，且各层分治递归可以同时进行。</p>
+<p>&emsp;&emsp;&emsp;<strong>优点：</strong> 效率高，稳定<br>&emsp;&emsp;&emsp;<strong>缺点：</strong> 空间复杂度略高<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>最坏时间复杂度：</strong> <em>O(𝒏log𝒏)</em><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>最优时间复杂度：</strong> <em>O(𝒏)</em><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>平均时间复杂度：</strong> <em>O(𝒏log𝒏)</em><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>空间复杂度：</strong> 总共 <em>O(𝒏)</em> </p>
+<p>&emsp;&emsp;归并排序算法的运作如下：<br>&emsp;&emsp;<font color="black" size="3"><strong>递归法:</strong></font><br>&emsp;&emsp;&emsp;&emsp;1. 申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列<br>&emsp;&emsp;&emsp;&emsp;2. 设定两个指针，最初位置分别为两个已经排序序列的起始位置<br>&emsp;&emsp;&emsp;&emsp;3. 比较两个指针所指向的元素，选择相对小的元素放入到合并空间，并移动指针到下一位置<br>&emsp;&emsp;&emsp;&emsp;4. 重复步骤3直到某一指针到达序列尾<br>&emsp;&emsp;&emsp;&emsp;5. 将另一序列剩下的所有元素直接复制到合并序列尾</p>
+<p>&emsp;&emsp;<font color="black" size="3"><strong>迭代法:</strong></font><br>&emsp;&emsp;原理如下（假设序列共有 <em>n</em> 个元素）：<br>&emsp;&emsp;&emsp;&emsp;1. 将序列每相邻两个数字进行归并操作，形成 <em>ceil(n/2)</em> 个序列，排序后每个序列包含两/一个元素<br>&emsp;&emsp;&emsp;&emsp;2. 若此时序列数不是1个则将上述序列再次归并，形成 <em>ceil(n/4)</em> 个序列，每个序列包含四/三个元素<br>&emsp;&emsp;&emsp;&emsp;3. 重复步骤2，直到所有元素排序完毕，即序列数为1</p>
+<!-- 图片居中的方法 -->
+<div align="center">
+
+<p>  <img src="/photos/Merge-sort.gif" alt="基本布局"><br>  图4-1 归并排序的过程</p>
+</div>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JS代码实现</span></span><br><span class="line"><span class="built_in">Array</span>.prototype.merge_sort = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> merge = <span class="function"><span class="keyword">function</span>(<span class="params">left, right</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> final = [];</span><br><span class="line">    <span class="keyword">while</span> (left.length &amp;&amp; right.length)</span><br><span class="line">      final.push(left[<span class="number">0</span>] &lt;= right[<span class="number">0</span>] ? left.shift() : right.shift());</span><br><span class="line">    <span class="keyword">return</span> final.concat(left.concat(right));</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">var</span> len = <span class="keyword">this</span>.length;</span><br><span class="line">  <span class="keyword">if</span> (len &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">var</span> mid = len / <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">return</span> merge(<span class="keyword">this</span>.slice(<span class="number">0</span>, <span class="built_in">parseInt</span>(mid)).merge_sort(), <span class="keyword">this</span>.slice(<span class="built_in">parseInt</span>(mid)).merge_sort());</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        今天我小饼干把话放在这里了  有错误一定要告诉我啊
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="🤡Ling">
+            🤡Ling
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/04/19/排序算法/&title=《排序算法》 — 👩🏻‍💻&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/04/19/排序算法/&title=《排序算法》 — 👩🏻‍💻&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/04/19/排序算法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法》 — 👩🏻‍💻&url=http://yoursite.com/2018/04/19/排序算法/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/04/19/排序算法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/04/22/JS对数组去重的几种方法/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JS对数组去重的几种方法</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/18/完整的URL请求页面过程/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">完整的URL请求页面过程</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <!-- <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div> -->
+    <div class="bottom">
+        <p><span>🤡Ling &copy;2018 - 2019</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/04/19/排序算法/&title=《排序算法》 — 👩🏻‍💻&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/04/19/排序算法/&title=《排序算法》 — 👩🏻‍💻&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/04/19/排序算法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法》 — 👩🏻‍💻&url=http://yoursite.com/2018/04/19/排序算法/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/04/19/排序算法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3ay46DMAwF0P7/TzPbkTrAtU1HanJYoaoNOSxcP/J6xdfx6+p9/n6fr/bYhYGB8bWM4/I6+877Cr2nXK+f7A0DA2MfxtmDk41eB9YeKd8bBgYGxtl3oiAYBOve68PAwMCoBtzrX/U+wcDAwOgVsZPWWzVZ/GAtjoGB8YWMXhj9n/uPzDcwMDC+inEUrzy9mySC5V1hYGAszegNIK+Lyd4IYTIQxcDA2IfxVBjtlcTJ+OEGjIGBsSgjeUz1kES13ZYfODtdBwMDYwNGLx2shtHJEDT6x8DAwFiakQTc3hGxPIzmg4FoBouBgbEco1eg5sG0d0ii0MjDwMDYgDE/bpXg89eXp5g3k1gMDIyFGPl4oHpsoheUy/vBwMBYmvFUgz4vX5Nf9UYIGBgYqzImTbQqoxfEo2IbAwNjaUY+tqwmedUBQN74S4YHGBgYazPmBW0VWR5YYmBgbMaojgHmJWsv0N8EdAwMjKUZk2MWveMRvXK38L+BgYGxKKPXmq+WvnnhmmeyfySIGBgYGzB6YTQvU5OXlax2OsjEwMDYgNE7vDUpg6vrNE+LYGBgfC3jKF69YWev9C0UtxgYGEszeoGyOmicFK4PbB0DA2MJxqRZn6eS1eSvnD5iYGBswMgb+r0EMW/JjWpxDAwMjEECN9/uTfjGwMDAuLzPj+P3UsaoCYiBgbEBIyliJ4Vuvt084GJgYOzDeCpR67Xh8hBcPaCGgYGxBOMHekED8doAFpoAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '咦! 回来了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

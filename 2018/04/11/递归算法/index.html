@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>递归算法 | 👩🏻‍💻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Algorithm">
+    <meta name="description" content="大家小时候都听过的： 从前有座山，山里有座庙，庙里有个老和尚在和小和尚讲故事，故事讲的是">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="递归算法">
+<meta property="og:url" content="http://yoursite.com/2018/04/11/递归算法/index.html">
+<meta property="og:site_name" content="👩🏻‍💻">
+<meta property="og:description" content="大家小时候都听过的： 从前有座山，山里有座庙，庙里有个老和尚在和小和尚讲故事，故事讲的是">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-13T08:23:02.587Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="递归算法">
+<meta name="twitter:description" content="大家小时候都听过的： 从前有座山，山里有座庙，庙里有个老和尚在和小和尚讲故事，故事讲的是">
+    
+        <link rel="alternate" type="application/atom+xml" title="👩🏻‍💻" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">🤡Ling</h5>
+          <a href="mailto:andimissu@163.com" title="andimissu@163.com" class="mail">andimissu@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/AndIMissU" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/3447900300" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">递归算法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">递归算法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-11T13:21:29.000Z" itemprop="datePublished" class="page-time">
+  2018-04-11
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#递归的定义"><span class="post-toc-number">1.</span> <span class="post-toc-text">递归的定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Wikipedia的定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Wikipedia的定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#正式定义"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">正式定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#对递归的理解"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">对递归的理解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#递归的设计和特点"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">递归的设计和特点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#递归的优缺点"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">递归的优缺点</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#递归常见的算法及应用"><span class="post-toc-number">2.</span> <span class="post-toc-text">递归常见的算法及应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#递归求n的阶乘"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">递归求n的阶乘</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#递归求斐波那契数列"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">递归求斐波那契数列</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-递归算法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">递归算法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-11 21:21:29" datetime="2018-04-11T13:21:29.000Z"  itemprop="datePublished">2018-04-11</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>大家小时候都听过的：</p>
+<p>从前有座山，山里有座庙，庙里有个老和尚在和小和尚讲故事，故事讲的是</p>
+<a id="more"></a>
+<p><font style="padding-left:30px">从前有座山，山里有座庙，庙里有个老和尚在和小和尚讲故事，故事讲的是</font></p>
+<p><font style="padding-left:60px">从前有座山，山里有座庙，庙里有个老和尚在和小和尚讲故事，故事讲的是</font></p>
+<p><font style="padding-left:90px">……</font></p>
+<p><font style="padding-left:60px">今天的斋饭很好吃.</font></p>
+<br>
+
+<h3 id="递归的定义"><a href="#递归的定义" class="headerlink" title="递归的定义"></a>递归的定义</h3><hr>
+<h4 id="Wikipedia的定义"><a href="#Wikipedia的定义" class="headerlink" title="Wikipedia的定义"></a>Wikipedia的定义</h4><blockquote>
+<p>Recursion occurs when a thing is defined in terms of itself or of its type. </p>
+</blockquote>
+<h4 id="正式定义"><a href="#正式定义" class="headerlink" title="正式定义"></a>正式定义</h4><blockquote>
+<p>在数学和计算机科学中，递归指由一种（或多种）简单的基本情况定义的一类对象或方法，并规定其他所有情况都能被还原为其基本情况。</p>
+</blockquote>
+<h4 id="对递归的理解"><a href="#对递归的理解" class="headerlink" title="对递归的理解"></a>对递归的理解</h4><p>&emsp;<strong>简单来说，递归就是程序不断的调用自身，递归方法就是方法直接的或者间接的调用自身的方法。</strong><br>&emsp;首先引用一下<a href="https://www.zhihu.com/question/20507130/answer/15551917" target="_blank" rel="noopener">知乎大佬</a>对递归形象生动的理解:</p>
+<p>  &emsp;&emsp;<strong>递归：你打开面前这扇门，看到屋里面还有一扇门（这门可能跟前面打开的门一样大小（静），也可能门小了些（动）），你走过去，发现手中的钥匙还可以打开它，你推开门，发现里面还有一扇门，你继续打开，…， 若干次之后，你打开面前一扇门，发现只有一间屋子，没有门了。 你开始原路返回，每走回一间屋子，你数一次，走到入口的时候，你可以回答出你到底用这钥匙开了几扇门。</strong></p>
+<h4 id="递归的设计和特点"><a href="#递归的设计和特点" class="headerlink" title="递归的设计和特点"></a>递归的设计和特点</h4><blockquote>
+<p>&emsp;&emsp;递归就是对问题进行分解，将大问题转换为小问题并用相同的方法进行求解。对于一个调用，它可以导致更多的调用，继续一层一层的调用下去，当问题分解到不能再分解的时候，就需要一个终止条件返回结果给调用者，调用者计算结果并将结果返回给调用这个调用者的调用者，如此返回下去直到结果传给最开始的那个调用者为止。<br><br><strong>特点：</strong></p>
+<ul>
+<li>反复执行的过程（调用自身）</li>
+<li>结束反复执行过程的条件（跳出方法的条件）</li>
+</ul>
+</blockquote>
+<h4 id="递归的优缺点"><a href="#递归的优缺点" class="headerlink" title="递归的优缺点"></a>递归的优缺点</h4><blockquote>
+<p><strong>优点：</strong></p>
+<ul>
+<li>代码简洁</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>时间耗较大，效率可能会低。递归有很多计算可能是重复的，有时候计算会随着n成指数增长，斐波那契数列就是一个例子。</li>
+<li>空间消耗大，可能会导致调用栈溢出。每一次函数调用都需要在内存栈中分配空间，但是每个进程的栈的容量是有限的，当调用的层次太多时，就会超出栈的容量，从而导致栈溢出。</li>
+</ul>
+</blockquote>
+<h3 id="递归常见的算法及应用"><a href="#递归常见的算法及应用" class="headerlink" title="递归常见的算法及应用"></a>递归常见的算法及应用</h3><ul>
+<li>递归求n的阶乘</li>
+<li>递归求斐波那契数列</li>
+</ul>
+<h4 id="递归求n的阶乘"><a href="#递归求n的阶乘" class="headerlink" title="递归求n的阶乘"></a>递归求n的阶乘</h4><p>  &emsp;&emsp;<strong>阶乘</strong>：n的阶乘就是所有比n小的正整数的积，定义 <strong>0的阶乘为1</strong>，n的阶乘为 n!<br>  &emsp;&emsp;要想解决这个问题，我们脑子里先回忆一下递归的特点，然后设计出递归的定义和终止条件。</p>
+<blockquote>
+<p>程序返回的结果肯定是当前n的阶乘的值<br>  <strong>敲敲黑板</strong><br>  <strong>[定义]</strong>：假设我们求的是6的阶乘 [6!]，那么我们就必须知道5的阶乘 [5!]，得出 [ 6！= 5！* 6 ]，接下来以此类推。<br>  <br><br>  <strong>再次敲敲黑板</strong><br>  <strong>[终止条件]</strong>：当我们类推到1的时候，我们都知道1的阶乘就等于1 [ 1!=1 ]，所以此时不需要继续类推下去了，直接返回1就好了。<br>  <br><br><strong>划重点</strong><br>  <strong>[整体思路]</strong>：用函数f()代表阶乘 [n!] : f(n) = f(n-1)*n;<br>  当n不为1时，函数继续调用自身，并且返回前一个数的阶乘的值；当n为1时，返回1的阶乘，也就是 [return 1].<br>  当然你也可以选择返回2的阶乘 [2!=2]或者3的阶乘 [3!=6].</p>
+</blockquote>
+<blockquote>
+<p><strong>代码实现：</strong><br>    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>( n &lt;= <span class="number">1</span>)&#123;     <span class="comment">//这里也包括了 当n为0的时候 返回1 [0!=1];</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> f(n<span class="number">-1</span>) * n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="递归求斐波那契数列"><a href="#递归求斐波那契数列" class="headerlink" title="递归求斐波那契数列"></a>递归求斐波那契数列</h4><p>&emsp;&emsp;<strong>斐波那契数列：</strong>它指的是这样一个数列 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233，377，610，987，1597，2584，4181，6765，10946，17711，28657，46368……  这个数列从第三项开始，每一项都等于前两项之和。<br>&emsp;&emsp;同样的，我们需要设计这个问题的递归程序的反复执行过程和跳出执行过程的条件：</p>
+<blockquote>
+<p><strong>[思路]</strong>: 首先，这个递归程序是需要返回斐波那契数列中的第n个数的值<br>&emsp;&emsp;当求[n=6]时，我们需要知道 [n=5] 和 [n=4] 的和，<br>&emsp;&emsp;当[n=5]时，我们要知道 [n=4] 和 [n=3] 的和，<br>&emsp;&emsp;当[n=4]时，我们要知道 [n=3] 和 [n=2] 的和，<br>&emsp;&emsp;类推下去…<br>&emsp;&emsp;当[n=1]或者[n=2]，我们是知道这两项的值的，所以直接返回1.<br><br><br><strong>敲黑板</strong><br><strong>[递归程序]</strong>：fibonacci(n) = fibonacci(n-1) + fibonacci(n-2)<br>&emsp;&emsp;当 n==1 或者 n==2 时，程序直接返回1.<br>&emsp;&emsp;当 n!=1 且 n!=2 时，程序返回 fibonacci(n-1) + fibonacci(n-2).</p>
+</blockquote>
+<blockquote>
+<p><strong>代码实现：</strong><br>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>( n == <span class="number">1</span> || n == <span class="number">2</span>)&#123;     <span class="comment">//当 n==1 或者 n==2 时，程序直接返回1.;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> fibonacci(n<span class="number">-1</span>) + fibonacci(n<span class="number">-2</span>);   <span class="comment">//当 n!=1 且 n!=2 时，程序返回 fibonacci(n-1) + fibonacci(n-2).</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        今天我小饼干把话放在这里了  有错误一定要告诉我啊
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="🤡Ling">
+            🤡Ling
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/04/11/递归算法/&title=《递归算法》 — 👩🏻‍💻&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/04/11/递归算法/&title=《递归算法》 — 👩🏻‍💻&source=大家小时候都听过的：
+从前有座山，山里有座庙，庙里有个老和尚在和小和尚讲故事，故事讲的是" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/04/11/递归算法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《递归算法》 — 👩🏻‍💻&url=http://yoursite.com/2018/04/11/递归算法/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/04/11/递归算法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/04/18/完整的URL请求页面过程/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">完整的URL请求页面过程</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <!-- <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div> -->
+    <div class="bottom">
+        <p><span>🤡Ling &copy;2018 - 2019</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/04/11/递归算法/&title=《递归算法》 — 👩🏻‍💻&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/04/11/递归算法/&title=《递归算法》 — 👩🏻‍💻&source=大家小时候都听过的：
+从前有座山，山里有座庙，庙里有个老和尚在和小和尚讲故事，故事讲的是" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/04/11/递归算法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《递归算法》 — 👩🏻‍💻&url=http://yoursite.com/2018/04/11/递归算法/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/04/11/递归算法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aS27EMAwE0bn/pSdA9rKrSTmIqdLKGMSfpwCEpObng8f3d6yuV2P1N/zezUOGDBmvZfBPSZ+zmgh+b0CVIUPGAYxdRbbzudfXN98sQ4YMGaWCyAeZPhkyZMhIC+6qjF4/Of1FhgwZMmpHZuQXXkxrz5QhQ8ZpjH4w8Nz1n+YbMmTI+JeM/rbzepl4XRx3bYllyJAxm3G9BSX1jR/3k+eQt3xqj5MhQ8ZrGddbTR40kqOxXQdtMmTIOJnBX9PZfKZtFmhqZMiQcQAjXZDxWDHd7qbTJ0OGjNMYvNjxgsh/J1HETQYrQ4aMoYzabXtbKDpxKfrPyJAhYwSDH67xJi3+evKcOMKUIUPGIEa8XSyVy7SpIg4zZMiQcQAjbeEiYUCnLSzOK2XIkDGaUYsYOwFAJyQIDgRlyJAxiNFps+g3WPBJuVmGypAhYzSjtn1NA0h+9J8GqPGcyZAh44WMJ1ofyLEaOfrnbBkyZMxmkGVfeiRXawtLC/1NPCBDhoyhDH5dWw7yUJM0nwXrTRkyZAxi8MP6J6JNXqBRd5sMGTLGMToxZL+BLN1Iy5Ah4zTGNxxprEjCy1rjxTKJlSFDxjgGH/3C2nlXbVMtQ4aMSQxeZJ9gbyu4MmTIOICRFr5OYNlp+Fi+V4YMGTLAQpBsVjtlNzgvlCFDxsGM6+JI2HyD2uoZkSFDxlBGLQzgvDQSiKdShgwZoxm7DusJL17w4eYPGTJkDGX8AHk/iYeEttn0AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '咦! 回来了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

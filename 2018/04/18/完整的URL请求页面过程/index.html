@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>完整的URL请求页面过程 | 👩🏻‍💻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="浏览器">
+    <meta name="description" content="&amp;emsp;&amp;emsp;当我们在网页浏览器（Web browser）的地址栏中输入URL时，Web页面是如何呈现的？就让我们来聊聊从用户输入到页面加载完成的过程中都发生了什么事情。">
+<meta name="keywords" content="浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="完整的URL请求页面过程">
+<meta property="og:url" content="http://yoursite.com/2018/04/18/完整的URL请求页面过程/index.html">
+<meta property="og:site_name" content="👩🏻‍💻">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;当我们在网页浏览器（Web browser）的地址栏中输入URL时，Web页面是如何呈现的？就让我们来聊聊从用户输入到页面加载完成的过程中都发生了什么事情。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-13T07:48:25.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="完整的URL请求页面过程">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;当我们在网页浏览器（Web browser）的地址栏中输入URL时，Web页面是如何呈现的？就让我们来聊聊从用户输入到页面加载完成的过程中都发生了什么事情。">
+    
+        <link rel="alternate" type="application/atom+xml" title="👩🏻‍💻" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">🤡Ling</h5>
+          <a href="mailto:andimissu@163.com" title="andimissu@163.com" class="mail">andimissu@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/AndIMissU" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/3447900300" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">完整的URL请求页面过程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">完整的URL请求页面过程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-18T09:15:29.000Z" itemprop="datePublished" class="page-time">
+  2018-04-18
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#请求过程简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">请求过程简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#请求过程详解"><span class="post-toc-number">2.</span> <span class="post-toc-text">请求过程详解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DNS查找IP地址"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">DNS查找IP地址</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HTTP请求"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">HTTP请求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一-三次握手建立TCP连接"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">(一) 三次握手建立TCP连接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#二-完成三次握手，客户端与服务器开始传送数据。"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">(二) 完成三次握手，客户端与服务器开始传送数据。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#三-四次挥手终止连接"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">(三) 四次挥手终止连接</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务器的永久重定向响应"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">服务器的永久重定向响应</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#浏览器跟踪重定向地址"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">浏览器跟踪重定向地址</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务器处理请求，并返回一个HTTP响应"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">服务器处理请求，并返回一个HTTP响应</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#页面渲染"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">页面渲染</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-完整的URL请求页面过程"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">完整的URL请求页面过程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-18 17:15:29" datetime="2018-04-18T09:15:29.000Z"  itemprop="datePublished">2018-04-18</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>&emsp;&emsp;当我们在网页浏览器（Web browser）的地址栏中输入URL时，Web页面是如何呈现的？就让我们来聊聊从用户输入到页面加载完成的过程中都发生了什么事情。</p>
+<a id="more"></a>
+<h2 id="请求过程简介"><a href="#请求过程简介" class="headerlink" title="请求过程简介"></a>请求过程简介</h2><p>用户输入URL大概发生了以下一些事：</p>
+<blockquote>
+<p>(1) DNS域名解析到对应的IP地址；<br>  (2) 浏览器向Web服务器发送一个HTTP请求；<br>  (3) 服务器的永久重定向响应;<br>  (4) 浏览器跟踪重定向地址;<br>  (5) 服务器处理请求，并返回一个HTTP响应;<br>  (6) 浏览器显示HTML;</p>
+</blockquote>
+<hr>
+<h2 id="请求过程详解"><a href="#请求过程详解" class="headerlink" title="请求过程详解"></a>请求过程详解</h2><h3 id="DNS查找IP地址"><a href="#DNS查找IP地址" class="headerlink" title="DNS查找IP地址"></a>DNS查找IP地址</h3><p>&emsp;&emsp;DNS是<strong>域名系统</strong>（<em>Domain Name System</em>）的缩写，是因特网的一项核心服务，是和HTTP协议位于应用层的协议，它作为可以将域名和IP地址相互映射的一个分布式数据库，能够使人更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。</p>
+<blockquote>
+<p><strong>(一) DNS 查找过程</strong></p>
+<ol>
+<li>浏览器缓存 – 浏览器会缓存DNS记录一段时间，但是操作系统并没有告诉浏览器储存DNS记录的时间，这样不同浏览器会储存个自固定的一个时间（2分钟到30分钟不等）。</li>
+<li>系统缓存 – 如果在浏览器缓存里没有找到需要的记录，浏览器会做一个系统调用（windows里是gethostbyname），这样便可获得系统缓存中的记录。</li>
+<li>路由器缓存 – 接着，前面的查询请求发向路由器，它一般会有自己的DNS缓存。</li>
+<li>ISP DNS缓存 – 接下来要check的就是ISP缓存DNS的服务器。在这一般都能找到相应的缓存记录。</li>
+<li>递归搜索 – 你的ISP的DNS服务器从跟域名服务器开始进行递归搜索，从.com顶级域名服务器到example的域名服务器。一般DNS服务器的缓存中会有.com域名服务器中的域名，所以到顶级服务器的匹配过程不是那么必要了。</li>
+</ol>
+<p><strong>(二) DNS进行域名解析的过程</strong></p>
+<ol>
+<li>客户端发出 DNS 请求翻译 IP 地址或主机名；</li>
+<li>DNS 服务器在收到客户端的请求后，检查 DNS 服务器的缓存，若查到请求的地址或名字，即向客户端发出应答信息；</li>
+<li>若没有查到，则在数据库中查找，若查到请求的地址或名字，即向客户端发出应答信息；</li>
+<li>若没有查到，则将请求发给根域 DNS 服务器，并依序从根域查找顶级域，由顶级查找二级域，二级域查找三级，直至找到要解析的地址或名字。然后，向客户端所在网络的 DNS 服务器发出应答信息，DNS 服务器收到应答后，先在缓存中存储，然后，将解析结果发给客户端。</li>
+<li>若没有找到，则返回错误信息。</li>
+</ol>
+</blockquote>
+<h3 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h3><blockquote>
+<h4 id="一-三次握手建立TCP连接"><a href="#一-三次握手建立TCP连接" class="headerlink" title="(一) 三次握手建立TCP连接"></a>(一) 三次握手建立TCP连接</h4><p>  &emsp;&emsp;在 http 工作开始之前，浏览器首先要通过网络与服务器建立连接，该连接是通过 TCP 来完成的。该协议与 IP 协议共同构建 Internet ，即著名的 TCP/IP 协议族，因此 Internet 又被称作是 TCP/IP 网络。<strong>http 是比 TCP 更高层次的应用层协议</strong>。根据规则，只有低层协议建立之后才能进行更高次层协议的连接。因此，首先要建立 TCP 连接，一般 TCP 连接的端口号是 80 。在 TCP/IP 协议中，TCP 协议提供可靠的连接服务，采用三次握手建立一个连接：<br>    &emsp;&emsp;1. 第一次握手：建立连接时，客户端发送 SYN 包（syn=j）到服务器，并进入 SYN_SENT 状态，等待服务器确认；SYN：同步序列编号（Synchronize Sequence Numbers）<br>    &emsp;&emsp;2. 第二次握手：服务器收到 SYN 包，必须确认客户的 SYN（ack=j+1），同时自己也发送一个 SYN 包（syn=k），即 SYN+ACK 包，此时服务器进入 SYN_RECV 状态；<br>    &emsp;&emsp;3. 第三次握手：客户端收到服务器的 SYN+ACK 包，向服务器发送确认包 ACK(ack=k+1），此包发送完毕，客户端和服务器进入 ESTABLISHED（TCP连接成功）状态，完成三次握手。</p>
+</blockquote>
+<blockquote>
+<h4 id="二-完成三次握手，客户端与服务器开始传送数据。"><a href="#二-完成三次握手，客户端与服务器开始传送数据。" class="headerlink" title="(二) 完成三次握手，客户端与服务器开始传送数据。"></a>(二) 完成三次握手，客户端与服务器开始传送数据。</h4><p>  &emsp;&emsp;一旦建立了 TCP 连接，浏览器就会向服务器发送 http 请求命令。浏览器发送其请求命令之后，还要以头信息的形式向服务器发送一些别的信息。此后，浏览器发送了一空白行来通知服务器，它已经结束了该头信息的发送。</p>
+</blockquote>
+<blockquote>
+<h4 id="三-四次挥手终止连接"><a href="#三-四次挥手终止连接" class="headerlink" title="(三) 四次挥手终止连接"></a>(三) 四次挥手终止连接</h4><p>  &emsp;&emsp;由于 TCP 连接是全双工的，因此每个方向都必须单独进行关闭。原则是当一方完成它的数据发送任务后，就能发送一个 FIN 来终止这个方向的连接。收到一个 FIN 只意味着这一方向上没有数据流动。一个 TCP 连接在收到一个 FIN 后仍能发送数据。首先进行关闭的一方将执行主动关闭，而另一方执行被动关闭。<br>    &emsp;&emsp;1. 第一次挥手：TCP 客户端发送一个 FIN，用来关闭客户端到服务器的数据传送（客户端向服务器发送一个断开连接的请求）;<br>    &emsp;&emsp;2. 第二次挥手：服务器收到这个 FIN，它发回一个 ACK（确认收到请求的信号），确认序号为收到的序号加 1 。和 SYN 一样，一个 FIN 将占用一个序号 (服务器接收到请求之后，发送确认接受到请求的信号);<br>    &emsp;&emsp;3. 第三次挥手：服务器关闭客户端的连接，发送一个 FIN 给客户端 (服务器向客户端发送断开的通知);<br>    &emsp;&emsp;4. 第四次挥手：客户端发回 ACK 报文确认，并将确认序号设置为收到序号加 1  (客户端接收到断开的通知后断开连接，并反馈一个确认信号，服务器接收到确认信号断开连接)。</p>
+</blockquote>
+<h3 id="服务器的永久重定向响应"><a href="#服务器的永久重定向响应" class="headerlink" title="服务器的永久重定向响应"></a>服务器的永久重定向响应</h3><p>&emsp;&emsp;服务器会给浏览器返回一个301永久重定向响应服务器给浏览器响应一个 301 永久重定向响应，这样浏览器就会访问<a href="http://www.facebook.com/" target="_blank" rel="noopener">http://www.facebook.com/</a> 而非 <a href="http://facebook.com/" target="_blank" rel="noopener">http://facebook.com/</a> 。<br>&emsp;&emsp;为什么服务器一定要重定向而不是直接发会用户想看的网页内容呢？其中一个原因跟搜索引擎排名有关。你看，如果一个页面有两个地址，就像 <a href="http://www.igoro.com/" target="_blank" rel="noopener">http://www.igoro.com/</a> 和 <a href="http://igoro.com/" target="_blank" rel="noopener">http://igoro.com/</a> ，搜索引擎会认为它们是两个网站，结果造成每一个的搜索链接都减少从而降低排名。而搜索引擎知道 301 永久重定向是什么意思，这样就会把访问带 www 的和不带 www 的地址归到同一个网站排名下。还有一个原因是用不同的地址会造成缓存友好性变差。当一个页面有好几个名字时，它可能会在缓存里出现好几次。</p>
+<h3 id="浏览器跟踪重定向地址"><a href="#浏览器跟踪重定向地址" class="headerlink" title="浏览器跟踪重定向地址"></a>浏览器跟踪重定向地址</h3><p>&emsp;&emsp;浏览器通过 301 知道 <a href="http://www.facebook.com" target="_blank" rel="noopener">http://www.facebook.com</a> 才是要访问的正确地址，所以它会发送另一个获取请求。</p>
+<h3 id="服务器处理请求，并返回一个HTTP响应"><a href="#服务器处理请求，并返回一个HTTP响应" class="headerlink" title="服务器处理请求，并返回一个HTTP响应"></a>服务器处理请求，并返回一个HTTP响应</h3><p>&emsp;&emsp;服务器接收到获取请求并处理，然后返回一个HTTP响应</p>
+<h3 id="页面渲染"><a href="#页面渲染" class="headerlink" title="页面渲染"></a>页面渲染</h3><p>&emsp;&emsp;现代浏览器渲染页面的过程是这样的：<strong>解析 html 以构建 DOM 树 –&gt; 构建渲染树 –&gt; 布局渲染树 –&gt; 绘制渲染树</strong><br>DOM 树是由 html 文件中的标签排列组成。</p>
+<p>&emsp;&emsp;渲染树是在 DOM 树中加入 css 或 html 中的 style 样式而形成。渲染树只包含需要显示在页面中的 DOM 元素，像 &lt;head&gt;元素或 display 属性值为 none 的元素都不在渲染树中。在浏览器还没接收到完整的 html 文件时，它就开始渲染页面了。</p>
+<p>&emsp;&emsp;在遇到外部链入的脚本标签、样式标签、图片时，会再次发送 http 请求重复上述的步骤。在收到 css 文件后，会对已经渲染的页面重新渲染，加入它们应有的样式。图片文件加载完，立刻显示在相应位置。在这一过程中可能会触发页面的重绘或重排。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        今天我小饼干把话放在这里了  有错误一定要告诉我啊
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="🤡Ling">
+            🤡Ling
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器/">浏览器</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/04/18/完整的URL请求页面过程/&title=《完整的URL请求页面过程》 — 👩🏻‍💻&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/04/18/完整的URL请求页面过程/&title=《完整的URL请求页面过程》 — 👩🏻‍💻&source=&emsp;&emsp;当我们在网页浏览器（Web browser）的地址栏中输入URL时，Web页面是如何呈现的？就让我们来聊聊从用户输入到页面加载完成..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/04/18/完整的URL请求页面过程/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《完整的URL请求页面过程》 — 👩🏻‍💻&url=http://yoursite.com/2018/04/18/完整的URL请求页面过程/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/04/18/完整的URL请求页面过程/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/04/19/排序算法/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">排序算法</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/11/递归算法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">递归算法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <!-- <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div> -->
+    <div class="bottom">
+        <p><span>🤡Ling &copy;2018 - 2019</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/04/18/完整的URL请求页面过程/&title=《完整的URL请求页面过程》 — 👩🏻‍💻&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/04/18/完整的URL请求页面过程/&title=《完整的URL请求页面过程》 — 👩🏻‍💻&source=&emsp;&emsp;当我们在网页浏览器（Web browser）的地址栏中输入URL时，Web页面是如何呈现的？就让我们来聊聊从用户输入到页面加载完成..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/04/18/完整的URL请求页面过程/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《完整的URL请求页面过程》 — 👩🏻‍💻&url=http://yoursite.com/2018/04/18/完整的URL请求页面过程/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/04/18/完整的URL请求页面过程/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aQU4DMQwFUO5/6SKxKoKm3/YU0eRlVaEhMy8Ly4798RGv29e6/32/rvr7z2cuXhgYGG/LSLZbv+bRk+v91zuUqRgYGAcwkiC7xveezElPvhkDAwPjooRvzU4OBQMDA6PKWIfOXtjFwMDAmBSxk+RvnQJWC2AMDIzTGL3GwN/8fnl/AwMD498zboM12Wf+9m+7YWBgbM3IBylekRRWy9onQRkDA+MYRm/0odeAzMvR6IAwMDCOZCQfkVyWVUdgcyoGBsZpjDxRq4bX3r1Z+RkMDIytGdWys1ruVpPLajsTAwPjBEb1yqz35OQyrtnIxMDA2IKRJGFVdq/QrWKeVOEYGBhbM5KCtpfk5UeQlMe/zIxgYGBsykhCXjLClc88zIc8HvIwMDA2ZfRStF6rspf2RakkBgbG1oxe67H30VcxmhU5BgbGmzPyIvbaobH5KBgGBsYJjOonzge5krOsXgJiYGCcwMgD6DwQ51dyhYCOgYGxNaM6bRX1GVqXd/PUEwMDY1fGOmnLGwB5+pg3GNafjoGBcQ4jLzjzcJm/vlcwR/+LgYGxEeNWXL0EcZ4+PjliDAyMrRmTAYvJdpPyuFmRY2BgvDkjD7IvLDuLAbdcK2NgYGzBqNa+1VGJKiY/bgwMDIw1Y3KV1tvhJQEXAwNjI8ak0K1e2xUAGBgYxzDyIrawdasl0AzHGBgYWzN6V/nz5kF+hVcd8sDAwNiI8Qnw3utBeD4y6AAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '咦! 回来了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>ReactNative踩坑记录（一）环境配置问题 | 👩🏻‍💻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="React,React Native">
+    <meta name="description" content="&amp;emsp;&amp;emsp;学了一点点React皮毛的我决定尝试下一下React Native :)">
+<meta name="keywords" content="React,React Native">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ReactNative踩坑记录（一）环境配置问题">
+<meta property="og:url" content="http://yoursite.com/2018/06/01/ReactNative-1/index.html">
+<meta property="og:site_name" content="👩🏻‍💻">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;学了一点点React皮毛的我决定尝试下一下React Native :)">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-13T07:50:27.616Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ReactNative踩坑记录（一）环境配置问题">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;学了一点点React皮毛的我决定尝试下一下React Native :)">
+    
+        <link rel="alternate" type="application/atom+xml" title="👩🏻‍💻" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">🤡Ling</h5>
+          <a href="mailto:andimissu@163.com" title="andimissu@163.com" class="mail">andimissu@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/AndIMissU" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/3447900300" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">ReactNative踩坑记录（一）环境配置问题</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">ReactNative踩坑记录（一）环境配置问题</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-01T02:33:40.000Z" itemprop="datePublished" class="page-time">
+  2018-06-01
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-ReactNative-1"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">ReactNative踩坑记录（一）环境配置问题</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-01 10:33:40" datetime="2018-06-01T02:33:40.000Z"  itemprop="datePublished">2018-06-01</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>&emsp;&emsp;学了一点点React皮毛的我决定尝试下一下React Native :) </p>
+<a id="more"></a>
+
+<p>&emsp;&emsp;明明很简单的配置，到我这里却各种出错，一路踩坑过来的我总算把ios环境配置好了。基础配置可以跟着<a href="https://reactnative.cn/docs/0.36/getting-started.html" target="_blank" rel="noopener">官网配置环境</a>来，上面写的很详细了。 我就分享一下我遇到的问题和解决方法：</p>
+<p><font color="black" size="5"><strong>React Native run-ios 的问题</strong></font></p>
+<ol>
+<li><font color="red"><strong>ReactNative 创建项目的时候没有权限</strong></font><br>&emsp;&emsp;<strong>错误信息:</strong> <font color="red">EACCES: permission denied, open ‘/Users/apple/.babel.json’</font><br>&emsp;&emsp;这种属于权限Mac的权限问题解决方法：<br>&emsp;&emsp;&emsp;&emsp;<strong>sudo chmod -R 777 /Users/apple/.babel.json</strong><br>&emsp;&emsp;然后删除项目重新init新的项目：<br>&emsp;&emsp;&emsp;&emsp;<strong>react-native init awesome-project</strong></li>
+<li><font color="red"><strong>安装watchman的问题</strong></font><br>&emsp;&emsp;&emsp;个人建议用最新的Xcode版本，因为我不想更新Xcode，觉得太大了，太占内存（贫穷的我用的是Air）就没有更新，结果watchman安装还报错，所以建议先更新Xcode吧，省事。</li>
+<li><font color="red"><strong>ReactNative run-ios 报错</strong></font><br>&emsp;&emsp;<strong>错误信息:</strong> <font color="red">Permission denied. Make sure watchman is running for this project.</font><br>&emsp;&emsp;这个是因为init命令默认会创建最新的版本，而目前最新的0.45及以上版本需要下载boost等几个第三方库编译。这些库在国内即便翻墙也很难下载成功，导致无法运行iOS项目。我没有对新版本的需求，所以我暂时创建的是0.44.3的版本，把之前的项目删除，重新创建项目：<br>&emsp;&emsp;&emsp;&emsp;<strong>react-native init awesome-project –version 0.44.3</strong></li>
+<li>等我安装了 AndroidStudio 再更新 run-andriod 的问题吧 :)</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        今天我小饼干把话放在这里了  有错误一定要告诉我啊
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="🤡Ling">
+            🤡Ling
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-Native/">React Native</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/06/01/ReactNative-1/&title=《ReactNative踩坑记录（一）环境配置问题》 — 👩🏻‍💻&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/06/01/ReactNative-1/&title=《ReactNative踩坑记录（一）环境配置问题》 — 👩🏻‍💻&source=&emsp;&emsp;学了一点点React皮毛的我决定尝试下一下React Native :) " data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/06/01/ReactNative-1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ReactNative踩坑记录（一）环境配置问题》 — 👩🏻‍💻&url=http://yoursite.com/2018/06/01/ReactNative-1/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/06/01/ReactNative-1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/22/JS对数组去重的几种方法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JS对数组去重的几种方法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <!-- <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div> -->
+    <div class="bottom">
+        <p><span>🤡Ling &copy;2018 - 2019</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/06/01/ReactNative-1/&title=《ReactNative踩坑记录（一）环境配置问题》 — 👩🏻‍💻&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/06/01/ReactNative-1/&title=《ReactNative踩坑记录（一）环境配置问题》 — 👩🏻‍💻&source=&emsp;&emsp;学了一点点React皮毛的我决定尝试下一下React Native :) " data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/06/01/ReactNative-1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ReactNative踩坑记录（一）环境配置问题》 — 👩🏻‍💻&url=http://yoursite.com/2018/06/01/ReactNative-1/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/06/01/ReactNative-1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOElEQVR42u3awY7CMAxF0f7/TzPSbAfCfXYYEfd2hRCiOV24dvKuC1+P3+vV5/U35Jd/r+sTlwwZMo5lkL/jjFf/ma4hpsqQIeMGDF5k12WUV8J1IeZrkyFDhgxeQHmB3vX4ZMiQIYO0g3wE/br3hgwZMg5k8Aau0ybWSJtncRkyZBzI6B8MfO7zv55vyJAh4ysZj/ZFmra0gMZrkCFDxmhG2tKR5a6pvN1cD7dXpzOVIUPGUQy+ocZjFpxdOxJ4cncZMmSMZqTDZBogS7fMyDetOVuGDBnHMkhDVhti06MCsgaElCFDxiBGeku+rc8PQTccYcqQIWM0I20Ha8GLWjgjLsEyZMgYykiX2CmXaURs3cPKkCHjPgxe5jpHkmmogjPimViGDBkHMmqjZroIPu7yjbnie0OGDBkHMtKYF2nO+kMp39QrptVkyJBxIKMWtugXzU5hlSFDxn0Y6fYZuU2KryGfhC1kyJAxlJFGKNJDSv5oSOP4ZlUyZMgYzajFvEhsq7aRt35wb0q2DBkyhjL4IEqWmMYsyKMMAhYyZMgYzUgLKG8Ea4z4EEKGDBmjGemC+hExXpRrLwYZMmRMYjzCq7NospVWC17IkCFjNoNf/QhFLVi2q1jLkCHjdAbf1iedZm2jrRPjkCFDxn0Y6RDbj1zU+jqUGZEhQ8btGbXjzM64iyIaMmTIkNFoATvUDXO2DBkyBjFqoyn5/d6jBRkyZNyTUSvKfMTlhTgdXze8W2TIkPHtjB954NE/DLs6cQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '咦! 回来了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

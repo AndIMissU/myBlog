@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>JS对数组去重的几种方法 | 👩🏻‍💻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript">
+    <meta name="description" content="&amp;emsp;面试经常问的一道题&amp;emsp;JS对数组去重的几种方法 (前面六种方法是普通数组，最后一种是对象数组)">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS对数组去重的几种方法">
+<meta property="og:url" content="http://yoursite.com/2018/04/22/JS对数组去重的几种方法/index.html">
+<meta property="og:site_name" content="👩🏻‍💻">
+<meta property="og:description" content="&amp;emsp;面试经常问的一道题&amp;emsp;JS对数组去重的几种方法 (前面六种方法是普通数组，最后一种是对象数组)">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-13T07:51:42.692Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS对数组去重的几种方法">
+<meta name="twitter:description" content="&amp;emsp;面试经常问的一道题&amp;emsp;JS对数组去重的几种方法 (前面六种方法是普通数组，最后一种是对象数组)">
+    
+        <link rel="alternate" type="application/atom+xml" title="👩🏻‍💻" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">🤡Ling</h5>
+          <a href="mailto:andimissu@163.com" title="andimissu@163.com" class="mail">andimissu@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/AndIMissU" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/3447900300" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JS对数组去重的几种方法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JS对数组去重的几种方法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-22T14:11:49.000Z" itemprop="datePublished" class="page-time">
+  2018-04-22
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-JS对数组去重的几种方法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JS对数组去重的几种方法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-22 22:11:49" datetime="2018-04-22T14:11:49.000Z"  itemprop="datePublished">2018-04-22</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>&emsp;面试经常问的一道题<br>&emsp;<strong>JS对数组去重的几种方法 (前面六种方法是普通数组，最后一种是对象数组)</strong></p>
+<a id="more"></a>
+<p><font color="black" size="4"><strong>方法一：</strong></font> 最原始的方法，定义一个新数组，并存放原数组的第一个元素，然后将元素组一一和新数组的元素对比，若不同则存放在新数组中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [ <span class="number">1</span>, <span class="number">1</span>, <span class="string">'1'</span>, <span class="string">'1'</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniqueArr</span>(<span class="params">oldArr</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 新的数组 用来存放去重后的值</span></span><br><span class="line">  <span class="keyword">var</span> newArr = [];  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; oldArr.length ;i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span> ; j &lt; newArr.length; j++) </span><br><span class="line">      <span class="comment">// 如果两数相等 则跳出第二个循环</span></span><br><span class="line">      <span class="keyword">if</span> (oldArr[i] === newArr[j]) <span class="keyword">break</span>; </span><br><span class="line">    <span class="comment">// 一轮循环结束还没跳出循环 则表示此数未再新数组里出现 则加入新数组 </span></span><br><span class="line">    <span class="keyword">if</span> (j == newArr.length)  newArr.push(oldArr[i]);   </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(uniqueArr(arr));  <span class="comment">// [ 1, '1' ]</span></span><br></pre></td></tr></table></figure>
+
+<p><font color="black" size="4"><strong>方法二：</strong></font> 先将数组排序，再相邻的进行比较，不同的存入新数组。（这个方法有缺陷，因为sort是按照字符编码的顺序进行排序，所以要先将数组的元素转换为字符串，来进行比较，下面的数组的这种情况就不能完美的去重。 <strong>个人认为sort方法是通过交换实现的排序，在数据量比较小的时候用的是冒泡排序，数据量比较大时用的是快速排序</strong>）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [ <span class="number">1</span>, <span class="number">1</span>, <span class="string">'1'</span>, <span class="string">'1'</span>, <span class="number">1</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniqueArr</span>(<span class="params">oldArr</span>) </span>&#123;</span><br><span class="line">  oldArr = oldArr.sort(); </span><br><span class="line">  <span class="keyword">var</span> newArr = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; oldArr.length ; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(oldArr[i] !== newArr[newArr.length<span class="number">-1</span>])</span><br><span class="line">      newArr.push(oldArr[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(uniqueArr(arr));  <span class="comment">// [ 1, '1', 1 ]</span></span><br></pre></td></tr></table></figure>
+
+<p><font color="black" size="4"><strong>方法三：</strong></font> 利用数组的indexOf下标属性来简化循环 (includes 也是一样的)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [ <span class="number">1</span>, <span class="number">1</span>, <span class="string">'1'</span>, <span class="string">'1'</span>, <span class="number">1</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniqueArr</span>(<span class="params">oldArr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; oldArr.length ; i++) </span><br><span class="line">    <span class="comment">//  利用indexof 判断某个值是否在新的数组里面</span></span><br><span class="line">    <span class="keyword">if</span>(newArr.indexOf(oldArr[i]) === <span class="number">-1</span>) </span><br><span class="line">      newArr.push(oldArr[i]);</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(uniqueArr(arr));   <span class="comment">// [ 1, '1' ]</span></span><br></pre></td></tr></table></figure>
+
+<p><font color="black" size="4"><strong>方法四：</strong></font> 利用ES6的 filter 方法 加上indexOf 返回第一个item出现的位置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [ <span class="number">1</span>, <span class="number">1</span>, <span class="string">'1'</span>, <span class="string">'1'</span>, <span class="number">1</span>, <span class="string">'2'</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniqueArr</span>(<span class="params">oldArr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = oldArr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, oldArr</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// indexOf 返回第一个item出现的位置 </span></span><br><span class="line">    <span class="keyword">return</span> oldArr.indexOf(item) === index;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(uniqueArr(arr));  <span class="comment">// [ 1, '1', '2' ]</span></span><br></pre></td></tr></table></figure>
+
+<p><font color="black" size="4"><strong>方法五：</strong></font> 利用对象属性存在的特性，如果没有该属性则存入新数组 (这里的 1 和 ‘1’ 在用obj[]添加属性时，会被自动换成 1 然后加入进obj)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [ <span class="number">1</span>, <span class="number">1</span>, <span class="string">'1'</span>, <span class="string">'1'</span>, <span class="number">1</span>, <span class="string">'2'</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniqueArr</span>(<span class="params">oldArr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = [];</span><br><span class="line">  <span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;oldArr.length; i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>( !obj[oldArr[i]] )&#123;</span><br><span class="line">      <span class="comment">// 属性不存在 则加入新数组 并将该属性变为 1</span></span><br><span class="line">      obj[oldArr[i]] = <span class="number">1</span>;</span><br><span class="line">      newArr.push(oldArr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; </span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(uniqueArr(arr));   <span class="comment">// [ 1, '2' ]</span></span><br></pre></td></tr></table></figure>
+
+<p><font color="black" size="4"><strong>方法六：</strong></font>利用ES6的 set 对象自动去重</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [ <span class="number">1</span>, <span class="number">1</span>, <span class="string">'1'</span>, <span class="string">'1'</span>, <span class="number">1</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniqueArr</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr));  <span class="comment">// 利用Array.from 将Set结构转换为数组</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(uniqueArr(arr));   <span class="comment">// [ 1, '1' ]</span></span><br></pre></td></tr></table></figure>
+
+<p><font color="black" size="4"><strong>Object键值对去重</strong></font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [&#123;<span class="attr">value</span>: <span class="number">1</span>&#125;, &#123;<span class="attr">value</span>: <span class="number">1</span>&#125;, &#123;<span class="attr">value</span>: <span class="number">2</span>&#125;];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniqueArr</span>(<span class="params">oldArr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">  <span class="keyword">return</span> oldArr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, oldArr</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 判断 obj 对象是否存在item这个属性  存在的话返回fasle 不存在的话 向Obj中添加该属性</span></span><br><span class="line">    <span class="keyword">return</span> obj.hasOwnProperty(<span class="keyword">typeof</span> item + <span class="built_in">JSON</span>.stringify(item)) ? <span class="literal">false</span> : (obj[<span class="keyword">typeof</span> item + <span class="built_in">JSON</span>.stringify(item)] = <span class="literal">true</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(uniqueArr(arr));   <span class="comment">// [&#123;value: 1&#125;, &#123;value: 2&#125;]</span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        今天我小饼干把话放在这里了  有错误一定要告诉我啊
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="🤡Ling">
+            🤡Ling
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/04/22/JS对数组去重的几种方法/&title=《JS对数组去重的几种方法》 — 👩🏻‍💻&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/04/22/JS对数组去重的几种方法/&title=《JS对数组去重的几种方法》 — 👩🏻‍💻&source=&emsp;面试经常问的一道题&emsp;JS对数组去重的几种方法 (前面六种方法是普通数组，最后一种是对象数组)" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/04/22/JS对数组去重的几种方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS对数组去重的几种方法》 — 👩🏻‍💻&url=http://yoursite.com/2018/04/22/JS对数组去重的几种方法/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/04/22/JS对数组去重的几种方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/06/01/ReactNative-1/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">ReactNative踩坑记录（一）环境配置问题</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/19/排序算法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">排序算法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <!-- <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div> -->
+    <div class="bottom">
+        <p><span>🤡Ling &copy;2018 - 2019</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/04/22/JS对数组去重的几种方法/&title=《JS对数组去重的几种方法》 — 👩🏻‍💻&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/04/22/JS对数组去重的几种方法/&title=《JS对数组去重的几种方法》 — 👩🏻‍💻&source=&emsp;面试经常问的一道题&emsp;JS对数组去重的几种方法 (前面六种方法是普通数组，最后一种是对象数组)" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/04/22/JS对数组去重的几种方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS对数组去重的几种方法》 — 👩🏻‍💻&url=http://yoursite.com/2018/04/22/JS对数组去重的几种方法/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/04/22/JS对数组去重的几种方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3aQW6DMBAF0Nz/0uk2Ugv8mbEhqp5XiAbsx8J2v+f1itv7o33eSX7/u+Xvz3scNTw8PLzB0I+GctRx0s77PXpn9f5hj3h4eHjbeHn3vV/mU3/+7PlI8PDw8L6HV93mVqd1PDw8vP/Eq26p83xgMh48PDy8p3hJGNGb4s+HNd+4L8ta8PDw8Doz9iuPXJ+93nK+h4eHhzc+Ve8ddE2m7zySiMaDh4eHt4FXnZTz7e/5gJLtda+84I/34OHh4S3lVY+aqvFrNSboRbqH9/Hw8PC28SYTd74t3hHgNo++8PDw8Aa8ZJLtDSIvlsqD2uYShYeHh7eNt3bjmw80/xD5klbIhvHw8PBavPywau0WvHpUNiq6wsPDw1vE603HeZCaf4L8kxV6xMPDw9vAm68nheKnGJOHI1ERAx4eHt5SXjWW7QUZVWQSIkdxMB4eHt42Xj7Fn0cDvdi3V/gV9YWHh4f3EC8ppeqVTFWfKvyXgIeHh3cLb1UxQa/QqhcKX4wHDw8PbwOv+ee4s+rgektO+RPg4eHhDXjVsqrqRN87QssjiYvAAg8PD+8W3rxYKhlQ7/0LFgY8PDy8W7bU1YWhtzmeLBLlAAUPDw9vEW8Sp1bLDqoFAdURjh7Gw8PDO+Xl0/SygCBYTnrhLx4eHt49vN4rqtFDtQIqR0ZLCx4eHt5SXt795DoPZKv3L57Cw8PD28CrwpJNcC9oyLfd1dAZDw8Pby3vXWyTI7FbT/Dw8PDwtvHyNlkA8kH3FoA8+MDDw8NbxesFqdXrXpFBXryFh4eHdz+vF+DmBQeTg7TeooWHh4f3Dbze4Vb+5mo5QhSF4OHh4T3K652wJR+iWmhVSFPw8PDwtvF6YUQv3p0kyuUDOTw8PLwNvN4muLpgTKb75KlRMQEeHh5eyvsBAeG7YGHcV2IAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '咦! 回来了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
