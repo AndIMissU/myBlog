@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-13T07:50:27.616Z</updated>
+  <updated>2019-08-15T03:17:06.389Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>挖掘 Echarts 的秘密</title>
+    <link href="http://yoursite.com/2019/08/14/echarts/"/>
+    <id>http://yoursite.com/2019/08/14/echarts/</id>
+    <published>2019-08-14T08:22:54.000Z</published>
+    <updated>2019-08-15T03:17:06.389Z</updated>
+    
+    <content type="html"><![CDATA[<p>&emsp;&emsp;记录较少的人才用到的 Echarts 功能 (以下均以官网的折线图堆叠实例为参考例子分析)</p><a id="more"></a><h3 id="自定义图表鼠标悬浮显示的内容"><a href="#自定义图表鼠标悬浮显示的内容" class="headerlink" title="自定义图表鼠标悬浮显示的内容"></a>自定义图表鼠标悬浮显示的内容</h3><p>&emsp;&emsp;正常情况下，echarts 的显示内容为：<strong>横坐标值 + 所选中的 legend 的颜色 + 所选中的 legend 名称 + 纵坐标值</strong>（如图 1-1）</p><div style="width:400px; margin: 0 auto; text-align: center"><p>  <img src="/photos/echarts-1.png" alt="基本布局"><br>  图1-1 基础的 Echarts 鼠标悬浮显示</p></div>&emsp;&emsp;有些时候我们希望这个悬浮框能不止是显示这些信息，还希望展示自己定义的或者动态的数据，Echarts 也做到了。<br><br><p><strong>需要知道的</strong>（tooltip 的 formatter 具体详细就去<a href="https://echarts.baidu.com/option.html#tooltip.formatter" target="_blank" rel="noopener">官方文档</a>）</p><ul><li><p>tooltip 里的 formatter 函数的参数 params，当鼠标悬浮到折线上显示的参数详情如下：</p><div style="width:600px"><p><img src="/photos/echarts-2.png" alt="基本布局"></p></div></li></ul><p><strong>自定义详情</strong></p><ol><li><p>series 中的 data 可以传入对象（对象的最好不要用 Echarts 的变量名），对象的 value 就是平时我们传入 data 数组内的值，如：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123; <span class="attr">brand</span>: <span class="string">'百度'</span>, <span class="attr">value</span>: <span class="number">820</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">brand</span>: <span class="string">'谷歌'</span>, <span class="attr">value</span>: <span class="number">932</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">brand</span>: <span class="string">'火狐'</span>, <span class="attr">value</span>: <span class="number">901</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">brand</span>: <span class="string">'IE'</span>, <span class="attr">value</span>: <span class="number">934</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">brand</span>: <span class="string">'Safari'</span>, <span class="attr">value</span>: <span class="number">1290</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">brand</span>: <span class="string">'360'</span>, <span class="attr">value</span>: <span class="number">1330</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">brand</span>: <span class="string">'QQ浏览器'</span>, <span class="attr">value</span>: <span class="number">1320</span> &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li><li><p>在 tooltip 内添加 formatter 函数，并打印参数，可以观察到如下图：</p><div style="width:600px; text-align: center"><p><img src="/photos/echarts-3.png" alt="基本布局"></p></div></li><li><p>所以就可以自由拼接想要的鼠标悬浮框内容啦</p><div style="width:500px;margin: 0 auto"><p><img src="/photos/echarts-4.png" alt="基本布局"></p></div></li></ol><hr><h3 id="自定义-legend-悬浮显示的内容"><a href="#自定义-legend-悬浮显示的内容" class="headerlink" title="自定义 legend 悬浮显示的内容"></a>自定义 legend 悬浮显示的内容</h3><p>&emsp;&emsp;普通情况下，echarts 的上面的 legend 在鼠标放上去的时候会触发下方图表的对应曲线的高亮显示，并不会触发其他的。有时候会希望 legend 在鼠标放上去的时候能显示这个 legend 的详细说明，于是又去研究 Echarts 的 legend 了。</p><ol><li><p>同样的，在 legend 内部添加 formatter 函数，并打印出参数内容，如下图: </p><div style="width:500px;"><p><img src="/photos/echarts-5.png" alt="基本布局"></p></div><div style="width:300px;"><p><img src="/photos/echarts-6.png" alt="基本布局"></p></div></li><li><p>得知打印出的东西之后，将 legend 内的 tooltip 的show 值改为 true，然后就可以开始对 legend 的 data 进行操作了。（⚠️注意：legend 内的数据必须和 series 的 data 的 name 一致）修改成如下图的亚子:</p><div style="width:500px;"><p><img src="/photos/echarts-7.png" alt="基本布局"></p></div></li><li><p>修改后的 Echarts 变成了这样：</p><div style="width:500px;margin: 0 auto"><p><img src="/photos/echarts-8.png" alt="基本布局"></p></div></li><li><p>此时需要对 formatter 内部的 return的值进行处理， 同时 tooltip 内的 formatter 返回的 name 也需要处理以下。处理有两种方法：</p><ul><li><p>直接对字符串进行切割处理：调用字符串的 <strong>silce</strong> 方法；</p></li><li><p>调用 echarts 封装好的方法（好处是可以自定义字体）：<strong>echarts.format.truncateText(name, 60, ‘14px Microsoft Yahei’, ‘’)</strong><br>两种方法用法如下图：</p><div style="width:500px;"><p><img src="/photos/echarts-9.png" alt="基本布局"></p></div></li></ul></li><li><p>效果：可以看到 legend 的 hover 显示可以出现了，并且也不影响下方折线的文字显示。</p><div style="width:500px;margin-left: 30px"><p> <img src="/photos/echarts-10.gif" alt="基本布局"></p></div></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;emsp;&amp;emsp;记录较少的人才用到的 Echarts 功能 (以下均以官网的折线图堆叠实例为参考例子分析)&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Echarts" scheme="http://yoursite.com/tags/Echarts/"/>
+    
+  </entry>
   
   <entry>
     <title>ReactNative踩坑记录（一）环境配置问题</title>
